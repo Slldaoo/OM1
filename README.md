@@ -15,7 +15,7 @@
 * **Data Input**: Easily handles new data and sensors.
 * **Hardware Support via Plugins**: Supports new hardware through plugins for API endpoints and specific robot hardware connections to `ROS2`, `Zenoh`, and `CycloneDDS`. (We recommend `Zenoh` for all new development).
 * **Web-Based Debugging Display**: Monitor the system in action with WebSim (available at http://localhost:8000/) for easy visual debugging.
-* **Pre-configured Endpoints**: Supports Text-to-Speech, multiple LLMs from OpenAI, xAI, DeepSeek, Anthropic, Meta, Gemini, NearAI and multiple Visual Language Models (VLMs) with pre-configured endpoints for each service.
+* **Pre-configured Endpoints**: Supports Text-to-Speech, multiple LLMs from OpenAI, xAI, DeepSeek, Anthropic, Meta, Gemini, Groq and multiple Visual Language Models (VLMs) with pre-configured endpoints for each service.
 
 ## Architecture Overview
 ![Artboard 1@4x 1 (1)](https://github.com/user-attachments/assets/dd91457d-010f-43d8-960e-d1165834aa58)
@@ -23,7 +23,7 @@
 
 ## Getting Started
 
-To get started with OM1, let's run the Spot agent. Spot uses your webcam to capture and label objects. These text captions are then sent to the LLM, which returns `movement`, `speech` and `face` action commands. These commands are displayed on WebSim along with basic timing and other debugging information.
+To get started with OM1, let's run the Spot agent. Spot uses your webcam to capture and label objects. These text captions are then sent to the LLM, which returns `movement`, `speech`, and `face` action commands. These commands are displayed on WebSim along with basic timing and other debugging information.
 
 ### Package Management and VENV
 
@@ -81,8 +81,8 @@ OM1 assumes that robot hardware provides a high-level SDK that accepts elemental
 ```python
 ...
 elif output_interface.action == "shake paw":
-    if self.sport_client:
-        self.sport_client.Hello()
+    if self.spot_client:
+        self.spot_client.Hello()
 ...
 ```
 
@@ -140,7 +140,7 @@ export OM_API_KEY="your_api_key"
 
 Update the docker-compose file. Replace "unitree_go2_autonomy_advance" with the agent you want to run.
 ```bash
-command: ["unitree_go2_autonomy_advance"]
+<!-- command: ["unitree_go2_autonomy_advance"] -->
 ```
 
 ```bash
